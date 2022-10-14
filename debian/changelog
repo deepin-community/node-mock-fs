@@ -1,0 +1,60 @@
+node-mock-fs (4.13.0-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release
+
+  [ Jonas Smedegaard ]
+  * update patch 2001
+
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 28 Aug 2020 13:01:14 +0200
+
+node-mock-fs (4.12.0-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release
+
+  [ Jonas Smedegaard ]
+  * use debhelper compatibility level 13 (not 12)
+  * simplify source script copyright-check
+  * copyright: update coverage
+  * unfuzz patch
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 19 Jul 2020 20:44:06 +0200
+
+node-mock-fs (4.11.0-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release
+
+  [ Jonas Smedegaard ]
+  * watch: drop unused repacksuffix
+  * use debhelper compatibility level 12 (not 9);
+    build-depend on debhelper-compat (not debhelper)
+  * copyright: update coverage
+  * declare compliance with Debian Policy 4.5.0
+
+ -- Jonas Smedegaard <dr@jones.dk>  Thu, 23 Apr 2020 02:45:32 +0200
+
+node-mock-fs (4.10.4-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release(s)
+
+  [ Jonas Smedegaard ]
+  * fix clean generated docs
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 30 Nov 2019 10:55:46 +0100
+
+node-mock-fs (4.10.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * No-change source-only upload to allow testing migration. 
+
+ -- Boyuan Yang <byang@debian.org>  Thu, 31 Oct 2019 12:41:20 -0400
+
+node-mock-fs (4.10.2-1) unstable; urgency=low
+
+  * Initial release.
+    Closes: Bug#943333.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 23 Oct 2019 17:22:56 +0200

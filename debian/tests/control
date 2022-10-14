@@ -1,0 +1,4 @@
+Test-Command: node -e "require('mock-fs');"
+Depends:
+ node-mock-fs,
+Restrictions: superficial

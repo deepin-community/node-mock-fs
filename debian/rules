@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+# generate documentation unless nodoc requested
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
+DOCS = readme.html readme.txt
+CHANGELOGS = changelog.html changelog.txt
+endif
+
+# normalize output with TAP where possible unless terse requested
+ifeq (,$(filter terse,$(DEB_BUILD_OPTIONS)))
+MOCHA = mocha --reporter tap
+else
+MOCHA = mocha --reporter dot --no-colors
+endif
+
+override_dh_auto_build: $(DOCS) $(CHANGELOGS)
+
+override_dh_auto_test:
+	$(MOCHA) --recursive test
+
+override_dh_installdocs:
+	dh_installdocs --all -- $(DOCS)
+
+override_dh_installchangelogs:
+	dh_installchangelogs -- $(CHANGELOGS)
+
+override_dh_clean:
+	dh_clean -- $(DOCS) $(CHANGELOGS)
+
+%.html: %.md
+	pandoc --from gfm-raw_html --to html --standalone --output $@ $<
+
+%.txt: %.md
+	pandoc --from gfm-raw_html --to plain --output $@ $<
+
+%:
+	dh $@
