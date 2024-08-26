@@ -3,15 +3,13 @@
 const chai = require('chai');
 const constants = require('constants');
 const semver = require('semver');
-const fs = require('fs');
-const hasPromise = !!fs.promises;
 
 /** @type {boolean} */
 chai.config.includeStack = true;
 
 /**
  * Chai's assert function configured to include stacks on failure.
- * @type {function}
+ * @type {Function}
  */
 exports.assert = chai.assert;
 
@@ -26,7 +24,7 @@ const TEST = {
   xit: xit,
   describe: describe,
   xdescribe: xdescribe,
-  run: run
+  run: run,
 };
 
 const NO_TEST = {
@@ -34,10 +32,10 @@ const NO_TEST = {
   xit: xit,
   describe: xdescribe,
   xdescribe: xdescribe,
-  run: noRun
+  run: noRun,
 };
 
-exports.inVersion = function(range) {
+exports.inVersion = function (range) {
   if (semver.satisfies(process.version, range)) {
     return TEST;
   } else {
@@ -45,14 +43,12 @@ exports.inVersion = function(range) {
   }
 };
 
-exports.withPromise = hasPromise ? TEST : NO_TEST;
-
 /**
  * Convert a string to flags for fs.open.
  * @param {string} str String.
  * @return {number} Flags.
  */
-exports.flags = function(str) {
+exports.flags = function (str) {
   switch (str) {
     case 'r':
       return constants.O_RDONLY;
@@ -111,7 +107,7 @@ exports.flags = function(str) {
   }
 };
 
-exports.assertEqualPaths = function(actual, expected) {
+exports.assertEqualPaths = function (actual, expected) {
   if (process.platform === 'win32') {
     chai.assert.equal(actual.toLowerCase(), expected.toLowerCase());
   } else {

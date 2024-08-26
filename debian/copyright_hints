@@ -15,16 +15,18 @@ Files: benchmarks/read-integration-mock.js
  changelog.md
  debian/TODO
  debian/control
+ debian/copyright-check
  debian/gbp.conf
  debian/install
  debian/patches/2001_privacy.patch
  debian/patches/series
  debian/rules
  debian/source/format
+ debian/source/lintian-overrides
  debian/tests/control
  debian/watch
  lib/binding.js
- lib/buffer.js
+ lib/bypass.js
  lib/descriptor.js
  lib/directory.js
  lib/error.js
@@ -32,15 +34,20 @@ Files: benchmarks/read-integration-mock.js
  lib/filesystem.js
  lib/index.js
  lib/item.js
+ lib/loader.js
+ lib/readfilecontext.js
  lib/symlink.js
- package-lock.json
- package.json
  readme.md
+ tasks/next-dev-version.js
  test/.eslintrc
+ test/assets/dir/file2.txt
+ test/assets/dir/subdir/file3.txt
+ test/assets/file1.txt
  test/helper.js
  test/integration/filecount.js
  test/integration/filecount.spec.js
  test/lib/binding.spec.js
+ test/lib/bypass.spec.js
  test/lib/descriptor.spec.js
  test/lib/directory.spec.js
  test/lib/file.spec.js
@@ -72,24 +79,20 @@ Files: benchmarks/read-integration-mock.js
  test/lib/fs.writeFile.spec.js
  test/lib/index.spec.js
  test/lib/item.spec.js
+ test/lib/readfilecontext.spec.js
 Copyright: NONE
 License: UNKNOWN
+ FIXME
+
+Files: package-lock.json
+ package.json
+Copyright: NONE
+License: Expat
  FIXME
 
 Files: license.md
 Copyright: Joyent, Inc. and other Node contributors.
   Tim Schaub.
 License: Expat
- FIXME
-
-Files: debian/copyright-check
-Copyright: --deb-machine --ignore '^(debian/(changelog|copyright(_hints)?))$' --lines 0 -- * > debian/copyright_hints
-License: UNKNOWN
- FIXME
-
-Files: debian/source/lintian-overrides
-Copyright: GPL-3+
-  gpl-3+
-License: UNKNOWN
  FIXME
 

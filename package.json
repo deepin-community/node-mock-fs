@@ -1,7 +1,7 @@
 {
   "name": "mock-fs",
   "description": "A configurable mock file system.  You know, for testing.",
-  "version": "4.13.0",
+  "version": "5.1.4",
   "main": "lib/index.js",
   "homepage": "https://github.com/tschaub/mock-fs",
   "author": {
@@ -28,19 +28,39 @@
     "lib"
   ],
   "scripts": {
-    "lint": "eslint benchmarks lib test",
+    "lint": "eslint benchmarks lib test tasks",
     "pretest": "npm run lint",
     "test": "mocha --recursive test"
   },
   "eslintConfig": {
-    "extends": "tschaub"
+    "extends": "tschaub",
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "env": {
+      "es2020": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto",
+          "singleQuote": true,
+          "bracketSpacing": false,
+          "quoteProps": "preserve"
+        }
+      ]
+    }
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-tschaub": "^13.1.0",
-    "mocha": "^6.1.4",
-    "rimraf": "^2.6.3",
-    "semver": "^6.0.0"
+    "chai": "^4.3.4",
+    "eslint": "^8.21.0",
+    "eslint-config-tschaub": "^14.1.2",
+    "mocha": "^9.2.2",
+    "rimraf": "^3.0.2",
+    "semver": "^7.3.5"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }

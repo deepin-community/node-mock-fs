@@ -1,10 +1,9 @@
 'use strict';
 
-const helper = require('../helper');
+const helper = require('../helper.js');
 const fs = require('fs');
-const mock = require('../../lib/index');
+const mock = require('../../lib/index.js');
 const path = require('path');
-const withPromise = helper.withPromise;
 
 const assert = helper.assert;
 
@@ -39,7 +38,7 @@ describe('mock.bypass()', () => {
   it('bypasses patched process.cwd() and process.chdir()', () => {
     const originalCwd = process.cwd();
     mock({
-      dir: {}
+      dir: {},
     });
 
     process.chdir('dir');
@@ -58,17 +57,15 @@ describe('mock.bypass()', () => {
     assert.equal(process.cwd(), originalCwd);
   });
 
-  withPromise.it('runs an async function using the real filesystem', done => {
+  it('runs an async function using the real filesystem', (done) => {
     mock({'/path/to/file': 'content'});
 
     assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
     assert.isFalse(fs.existsSync(__filename));
 
-    const promise = mock.bypass(() => fs.promises.stat(__filename));
-    assert.instanceOf(promise, Promise);
-
-    promise
-      .then(stat => {
+    mock
+      .bypass(() => fs.promises.stat(__filename))
+      .then((stat) => {
         assert.isTrue(stat.isFile());
         assert.isFalse(fs.existsSync(__filename));
         done();
@@ -76,7 +73,7 @@ describe('mock.bypass()', () => {
       .catch(done);
   });
 
-  withPromise.it('handles promise rejection', done => {
+  it('handles promise rejection', (done) => {
     mock({'/path/to/file': 'content'});
 
     assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');
@@ -84,17 +81,15 @@ describe('mock.bypass()', () => {
 
     const error = new Error('oops');
 
-    const promise = mock.bypass(() => {
-      assert.isTrue(fs.existsSync(__filename));
-      return Promise.reject(error);
-    });
-    assert.instanceOf(promise, Promise);
-
-    promise
-      .then(() => {
-        done(new Error('expected rejection'));
+    mock
+      .bypass(() => {
+        assert.isTrue(fs.existsSync(__filename));
+        return Promise.reject(error);
       })
-      .catch(err => {
+      .then(() => {
+        done(new Error('should not succeed'));
+      })
+      .catch((err) => {
         assert.equal(err, error);
 
         assert.equal(fs.readFileSync('/path/to/file', 'utf8'), 'content');

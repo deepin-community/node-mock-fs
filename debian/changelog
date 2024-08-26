@@ -1,3 +1,35 @@
+node-mock-fs (5.1.4-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release(s)
+
+  [ Jonas Smedegaard ]
+  * declare compliance with Debian Policy 4.6.1
+  * update git-buildpackage config:
+    + use DEP-14 git branches
+    + enable automatic DEP-14 branch name handling
+    + add usage config
+  * fix lintian overrides
+  * update copyright info: update coverage
+  * generate documentation with cmark-gfm (not pandoc);
+    build-depend on cmark-gfm (not pandoc)
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 14 Aug 2022 09:01:31 +0200
+
+node-mock-fs (5.1.2-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release(s)
+
+  [ Jonas Smedegaard ]
+  * declare compliance with Debian Policy 4.6.0
+  * update copyright info:
+    + use Reference field (not License-Reference);
+      tighten lintian overrides
+    + update coverage
+
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 19 Nov 2021 00:20:55 +0100
+
 node-mock-fs (4.13.0-1) unstable; urgency=medium
 
   [ upstream ]
