@@ -1,9 +1,44 @@
 # Change Log
 
+## 5.1.4
+
+ * Fix for BigInt stats in Node 16.7 (thanks @ahippler, see [#363][#363])
+
+## 5.1.3
+
+ * Fix for BigInt stats in Node 18.7 (thanks @3cp, see [#361][#361])
+
+## 5.1.2
+
+ * Avoid open `FSREQCALLBACK` file handles (thanks @jloleysens, see [#342][#342])
+
+## 5.1.1
+
+ * Added `engines` to `package.json` to clarify that Node >= 12 is required (thanks @tillig, see [#337][#337])
+
+## 5.1.0
+
+ * Added support for Node >= 16.3 (thanks @Rugvip, see [#335][#335])
+
+## 5.0.0
+
+Breaking change:
+
+ * Remove support for Node < 12.  If you want to use mock-fs to test on Node 10 or lower, stick with mock-fs@4.
+
+New features:
+
+ * Support for BigInt file stats - required for Node 15+ (thanks @3cp, see [#325][#325])
+
+## 4.14.0
+
+ * Attempt to fix logging when using `mock-fs` with `tape` (see [#322][#322])
+ * Minor fix for `bypass()` (thanks @3cp, see [#320][#320])
+
 ## 4.13.0
 
  * Make `process.chdir()`, `process.cwd()`, and `fs.createWriteStream()` work with `bypass()` (thanks @3cp, see [#307][#307])
- * Fix memory leak associated with Node 10 (thanks #3cp, see [#303][#303])
+ * Fix memory leak associated with Node 10 (thanks @3cp, see [#303][#303])
  * Async function handling in `bypass()` (see [#306][#306])
  * Big new feature!  Temporarily bypass the mocked filesystem with the `bypass()` function (thanks @nonara, see [#304][#304])
 
@@ -301,3 +336,11 @@ Detailed changes:
 [#304]: https://github.com/tschaub/mock-fs/pull/304
 [#306]: https://github.com/tschaub/mock-fs/pull/306
 [#307]: https://github.com/tschaub/mock-fs/pull/307
+[#320]: https://github.com/tschaub/mock-fs/pull/320
+[#322]: https://github.com/tschaub/mock-fs/pull/322
+[#325]: https://github.com/tschaub/mock-fs/pull/325
+[#335]: https://github.com/tschaub/mock-fs/pull/335
+[#337]: https://github.com/tschaub/mock-fs/pull/337
+[#342]: https://github.com/tschaub/mock-fs/pull/342
+[#361]: https://github.com/tschaub/mock-fs/pull/361
+[#363]: https://github.com/tschaub/mock-fs/pull/363
